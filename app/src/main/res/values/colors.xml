@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- icon-512.png is drawn on white -->
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <!-- Reevl app token (css var app) (globals.css:114, light) — starting window background -->
+    <color name="reevl_app">#F7F8FA</color>
+</resources>

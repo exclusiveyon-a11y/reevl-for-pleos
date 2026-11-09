@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Starting window follows the system screen mode (Pleos 자동·라이트·다크) and uses the Reevl page colour
+         (css var app, globals.css:114 light / :149 dark) so no dark flash appears before the first Compose frame in day mode. -->
+    <style name="Theme.OnTheWay" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/reevl_app</item>
+    </style>
+</resources>

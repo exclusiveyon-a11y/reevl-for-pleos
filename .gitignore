@@ -1,0 +1,14 @@
+.gradle/
+build/
+local.properties
+# APKs only live under apk/
+*.apk
+!apk/*.apk
+!apk/**/*.apk
+evidence/**/*.mp4
+.idea/
+*.iml
+.DS_Store
+.kotlin/
+captures/
+__pycache__/

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="true" />
+
+    <!-- Reevl car API (BuildConfig.BASE_URL). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- NaviHelper: get*Info(), requestTrip() -->
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
+    <!-- NaviHelper: requestRoute(), requestRouteWithWaypoints(), cancelRoute(), ... -->
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE_SEARCH" />
+    <!-- NAVI_CUSTOM_MAP is intentionally NOT declared: requestNavigationScreen() is not called. -->
+
+    <!-- v7 NEARBY (현재 위치에서 추가): the car's position via the standard Android location API on AAOS (v7 master §3-A
+         "대안"). Asked only when NEARBY is opened; without it NEARBY uses the visited stop's coordinates. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OnTheWay">
+
+        <!-- CarUxRestrictionsManager (driving restriction) lives in the car shared library on AAOS. -->
+        <uses-library android:name="android.car" android:required="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode|density">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- SpikeActivity (NaviHelper spike) lives in the debug source set only, without a launcher entry. -->
+    </application>
+</manifest>

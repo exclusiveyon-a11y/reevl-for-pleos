@@ -1,0 +1,2453 @@
+{
+ "generatedAt": "2026-10-27T02:09:53.189Z",
+ "currentYear": 2026,
+ "constants": {
+  "PY": 3.3058,
+  "areaRatioApt": 0.77,
+  "areaRatioOfficetel": 0.5,
+  "areaRatioLand": 1
+ },
+ "sources": {
+  "rt": "reevl/frontend/lib/rt.ts",
+  "yearsSince": "components/detail/KeyStats.tsx:33",
+  "approveYM": "components/detail/KeyStats.tsx:34",
+  "mdD": "components/detail/TradeHighlights.tsx:16"
+ },
+ "rows": [
+  {
+   "fn": "won",
+   "args": [
+    0
+   ],
+   "value": "0만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    0
+   ],
+   "value": "0만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    0
+   ],
+   "value": "0만"
+  },
+  {
+   "fn": "won",
+   "args": [
+    1
+   ],
+   "value": "1만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    1
+   ],
+   "value": "1만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    1
+   ],
+   "value": "1만"
+  },
+  {
+   "fn": "won",
+   "args": [
+    950
+   ],
+   "value": "950만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    950
+   ],
+   "value": "950만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    950
+   ],
+   "value": "950만"
+  },
+  {
+   "fn": "won",
+   "args": [
+    9999
+   ],
+   "value": "9,999만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    9999
+   ],
+   "value": "9,999만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    9999
+   ],
+   "value": "9,999만"
+  },
+  {
+   "fn": "won",
+   "args": [
+    9999.5
+   ],
+   "value": "10,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    9999.5
+   ],
+   "value": "10,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    9999.5
+   ],
+   "value": "10,000만"
+  },
+  {
+   "fn": "won",
+   "args": [
+    10000
+   ],
+   "value": "1억"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    10000
+   ],
+   "value": "1억"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    10000
+   ],
+   "value": "1억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    10001
+   ],
+   "value": "1억 1만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    10001
+   ],
+   "value": "1억 1만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    10001
+   ],
+   "value": "1.0억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    23000
+   ],
+   "value": "2억 3,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    23000
+   ],
+   "value": "2억 3,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    23000
+   ],
+   "value": "2.3억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    230000
+   ],
+   "value": "23억"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    230000
+   ],
+   "value": "23억"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    230000
+   ],
+   "value": "23억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    236500
+   ],
+   "value": "23억 6,500만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    236500
+   ],
+   "value": "23억 6,500만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    236500
+   ],
+   "value": "23.6억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    273000
+   ],
+   "value": "27억 3,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    273000
+   ],
+   "value": "27억 3,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    273000
+   ],
+   "value": "27.3억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    277000
+   ],
+   "value": "27억 7,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    277000
+   ],
+   "value": "27억 7,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    277000
+   ],
+   "value": "27.7억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    316000
+   ],
+   "value": "31억 6,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    316000
+   ],
+   "value": "31억 6,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    316000
+   ],
+   "value": "31.6억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    103300
+   ],
+   "value": "10억 3,300만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    103300
+   ],
+   "value": "10억 3,300만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    103300
+   ],
+   "value": "10.3억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    99999
+   ],
+   "value": "9억 9,999만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    99999
+   ],
+   "value": "9억 9,999만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    99999
+   ],
+   "value": "10.0억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    100000
+   ],
+   "value": "10억"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    100000
+   ],
+   "value": "10억"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    100000
+   ],
+   "value": "10억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    1234567
+   ],
+   "value": "123억 4,567만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    1234567
+   ],
+   "value": "123억 4,567만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    1234567
+   ],
+   "value": "123.5억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    308000
+   ],
+   "value": "30억 8,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    308000
+   ],
+   "value": "30억 8,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    308000
+   ],
+   "value": "30.8억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    12345.4
+   ],
+   "value": "1억 2,345만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    12345.4
+   ],
+   "value": "1억 2,345만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    12345.4
+   ],
+   "value": "1.2억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    12345.5
+   ],
+   "value": "1억 2,346만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    12345.5
+   ],
+   "value": "1억 2,346만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    12345.5
+   ],
+   "value": "1.2억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    15000.49
+   ],
+   "value": "1억 5,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    15000.49
+   ],
+   "value": "1억 5,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    15000.49
+   ],
+   "value": "1.5억"
+  },
+  {
+   "fn": "won",
+   "args": [
+    -5000
+   ],
+   "value": "-5,000만"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    -5000
+   ],
+   "value": "-5,000만"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    -5000
+   ],
+   "value": "-5,000만"
+  },
+  {
+   "fn": "won",
+   "args": [
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "won",
+   "args": [
+    {
+     "special": "NaN"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    {
+     "special": "NaN"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    {
+     "special": "NaN"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "won",
+   "args": [
+    {
+     "special": "Infinity"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "wonShort",
+   "args": [
+    {
+     "special": "Infinity"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "eok",
+   "args": [
+    {
+     "special": "Infinity"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "num",
+   "args": [
+    0
+   ],
+   "value": "0"
+  },
+  {
+   "fn": "num",
+   "args": [
+    7
+   ],
+   "value": "7"
+  },
+  {
+   "fn": "num",
+   "args": [
+    999
+   ],
+   "value": "999"
+  },
+  {
+   "fn": "num",
+   "args": [
+    1000
+   ],
+   "value": "1,000"
+  },
+  {
+   "fn": "num",
+   "args": [
+    1148
+   ],
+   "value": "1,148"
+  },
+  {
+   "fn": "num",
+   "args": [
+    589
+   ],
+   "value": "589"
+  },
+  {
+   "fn": "num",
+   "args": [
+    195
+   ],
+   "value": "195"
+  },
+  {
+   "fn": "num",
+   "args": [
+    1234567
+   ],
+   "value": "1,234,567"
+  },
+  {
+   "fn": "num",
+   "args": [
+    12.5
+   ],
+   "value": "12.5"
+  },
+  {
+   "fn": "num",
+   "args": [
+    1234.5678
+   ],
+   "value": "1,234.568"
+  },
+  {
+   "fn": "num",
+   "args": [
+    0.1
+   ],
+   "value": "0.1"
+  },
+  {
+   "fn": "num",
+   "args": [
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "num",
+   "args": [
+    {
+     "special": "NaN"
+    }
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    0.081,
+    1
+   ],
+   "value": "+8.1%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    0.0805,
+    1
+   ],
+   "value": "+8.1%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    -0.0125,
+    1
+   ],
+   "value": "-1.3%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    0,
+    1
+   ],
+   "value": "+0.0%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    0.12345,
+    2
+   ],
+   "value": "+12.35%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    -0.177,
+    1
+   ],
+   "value": "-17.7%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    0.0005,
+    1
+   ],
+   "value": "+0.1%"
+  },
+  {
+   "fn": "pct",
+   "args": [
+    null,
+    1
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "m2",
+    "apt"
+   ],
+   "value": "59㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 59㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "py",
+    "apt"
+   ],
+   "value": "24평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "py",
+    "apt"
+   ],
+   "value": "24평(전용 59㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "m2",
+    "officetel"
+   ],
+   "value": "59㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 59㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "py",
+    "officetel"
+   ],
+   "value": "36평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "py",
+    "officetel"
+   ],
+   "value": "36평(전용 59㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "m2",
+    "land"
+   ],
+   "value": "59㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "m2",
+    "land"
+   ],
+   "value": "전용 59㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "py",
+    "land"
+   ],
+   "value": "18평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "py",
+    "land"
+   ],
+   "value": "18평(전용 59㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "m2",
+    null
+   ],
+   "value": "59㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "m2",
+    null
+   ],
+   "value": "전용 59㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    59.9,
+    "py",
+    null
+   ],
+   "value": "24평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    59.9,
+    "py",
+    null
+   ],
+   "value": "24평(전용 59㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "m2",
+    "apt"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "py",
+    "apt"
+   ],
+   "value": "33평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "py",
+    "apt"
+   ],
+   "value": "33평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "m2",
+    "officetel"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "py",
+    "officetel"
+   ],
+   "value": "51평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "py",
+    "officetel"
+   ],
+   "value": "51평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "m2",
+    "land"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "m2",
+    "land"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "py",
+    "land"
+   ],
+   "value": "26평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "py",
+    "land"
+   ],
+   "value": "26평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "m2",
+    null
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "m2",
+    null
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.8,
+    "py",
+    null
+   ],
+   "value": "33평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.8,
+    "py",
+    null
+   ],
+   "value": "33평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "m2",
+    "apt"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "py",
+    "apt"
+   ],
+   "value": "33평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "py",
+    "apt"
+   ],
+   "value": "33평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "m2",
+    "officetel"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "py",
+    "officetel"
+   ],
+   "value": "51평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "py",
+    "officetel"
+   ],
+   "value": "51평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "m2",
+    "land"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "m2",
+    "land"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "py",
+    "land"
+   ],
+   "value": "26평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "py",
+    "land"
+   ],
+   "value": "26평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "m2",
+    null
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "m2",
+    null
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.9,
+    "py",
+    null
+   ],
+   "value": "33평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.9,
+    "py",
+    null
+   ],
+   "value": "33평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "m2",
+    "apt"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "py",
+    "apt"
+   ],
+   "value": "33평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "py",
+    "apt"
+   ],
+   "value": "33평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "m2",
+    "officetel"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "py",
+    "officetel"
+   ],
+   "value": "51평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "py",
+    "officetel"
+   ],
+   "value": "51평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "m2",
+    "land"
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "m2",
+    "land"
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "py",
+    "land"
+   ],
+   "value": "26평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "py",
+    "land"
+   ],
+   "value": "26평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "m2",
+    null
+   ],
+   "value": "84㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "m2",
+    null
+   ],
+   "value": "전용 84㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    84.99,
+    "py",
+    null
+   ],
+   "value": "33평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    84.99,
+    "py",
+    null
+   ],
+   "value": "33평(전용 84㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "m2",
+    "apt"
+   ],
+   "value": "102㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 102㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "py",
+    "apt"
+   ],
+   "value": "40평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "py",
+    "apt"
+   ],
+   "value": "40평(전용 102㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "m2",
+    "officetel"
+   ],
+   "value": "102㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 102㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "py",
+    "officetel"
+   ],
+   "value": "62평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "py",
+    "officetel"
+   ],
+   "value": "62평(전용 102㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "m2",
+    "land"
+   ],
+   "value": "102㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "m2",
+    "land"
+   ],
+   "value": "전용 102㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "py",
+    "land"
+   ],
+   "value": "31평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "py",
+    "land"
+   ],
+   "value": "31평(전용 102㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "m2",
+    null
+   ],
+   "value": "102㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "m2",
+    null
+   ],
+   "value": "전용 102㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    102,
+    "py",
+    null
+   ],
+   "value": "40평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    102,
+    "py",
+    null
+   ],
+   "value": "40평(전용 102㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "m2",
+    "apt"
+   ],
+   "value": "114㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 114㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "py",
+    "apt"
+   ],
+   "value": "45평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "py",
+    "apt"
+   ],
+   "value": "45평(전용 114㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "m2",
+    "officetel"
+   ],
+   "value": "114㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 114㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "py",
+    "officetel"
+   ],
+   "value": "70평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "py",
+    "officetel"
+   ],
+   "value": "70평(전용 114㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "m2",
+    "land"
+   ],
+   "value": "114㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "m2",
+    "land"
+   ],
+   "value": "전용 114㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "py",
+    "land"
+   ],
+   "value": "35평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "py",
+    "land"
+   ],
+   "value": "35평(전용 114㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "m2",
+    null
+   ],
+   "value": "114㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "m2",
+    null
+   ],
+   "value": "전용 114㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    114.97,
+    "py",
+    null
+   ],
+   "value": "45평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    114.97,
+    "py",
+    null
+   ],
+   "value": "45평(전용 114㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "m2",
+    "apt"
+   ],
+   "value": "39㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 39㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "py",
+    "apt"
+   ],
+   "value": "16평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "py",
+    "apt"
+   ],
+   "value": "16평(전용 39㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "m2",
+    "officetel"
+   ],
+   "value": "39㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 39㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "py",
+    "officetel"
+   ],
+   "value": "24평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "py",
+    "officetel"
+   ],
+   "value": "24평(전용 39㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "m2",
+    "land"
+   ],
+   "value": "39㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "m2",
+    "land"
+   ],
+   "value": "전용 39㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "py",
+    "land"
+   ],
+   "value": "12평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "py",
+    "land"
+   ],
+   "value": "12평(전용 39㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "m2",
+    null
+   ],
+   "value": "39㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "m2",
+    null
+   ],
+   "value": "전용 39㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    39.6,
+    "py",
+    null
+   ],
+   "value": "16평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    39.6,
+    "py",
+    null
+   ],
+   "value": "16평(전용 39㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "m2",
+    "apt"
+   ],
+   "value": "134㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 134㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "py",
+    "apt"
+   ],
+   "value": "53평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "py",
+    "apt"
+   ],
+   "value": "53평(전용 134㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "m2",
+    "officetel"
+   ],
+   "value": "134㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 134㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "py",
+    "officetel"
+   ],
+   "value": "82평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "py",
+    "officetel"
+   ],
+   "value": "82평(전용 134㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "m2",
+    "land"
+   ],
+   "value": "134㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "m2",
+    "land"
+   ],
+   "value": "전용 134㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "py",
+    "land"
+   ],
+   "value": "41평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "py",
+    "land"
+   ],
+   "value": "41평(전용 134㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "m2",
+    null
+   ],
+   "value": "134㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "m2",
+    null
+   ],
+   "value": "전용 134㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    134.8,
+    "py",
+    null
+   ],
+   "value": "53평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    134.8,
+    "py",
+    null
+   ],
+   "value": "53평(전용 134㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "m2",
+    "apt"
+   ],
+   "value": "0㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "m2",
+    "apt"
+   ],
+   "value": "전용 0㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "py",
+    "apt"
+   ],
+   "value": "0평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "py",
+    "apt"
+   ],
+   "value": "0평(전용 0㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "m2",
+    "officetel"
+   ],
+   "value": "0㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "m2",
+    "officetel"
+   ],
+   "value": "전용 0㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "py",
+    "officetel"
+   ],
+   "value": "0평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "py",
+    "officetel"
+   ],
+   "value": "0평(전용 0㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "m2",
+    "land"
+   ],
+   "value": "0㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "m2",
+    "land"
+   ],
+   "value": "전용 0㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "py",
+    "land"
+   ],
+   "value": "0평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "py",
+    "land"
+   ],
+   "value": "0평(전용 0㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "m2",
+    null
+   ],
+   "value": "0㎡"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "m2",
+    null
+   ],
+   "value": "전용 0㎡"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    0,
+    "py",
+    null
+   ],
+   "value": "0평"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    0,
+    "py",
+    null
+   ],
+   "value": "0평(전용 0㎡)"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "m2",
+    "apt"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "m2",
+    "apt"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "py",
+    "apt"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "py",
+    "apt"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "m2",
+    "officetel"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "m2",
+    "officetel"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "py",
+    "officetel"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "py",
+    "officetel"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "m2",
+    "land"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "m2",
+    "land"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "py",
+    "land"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "py",
+    "land"
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "m2",
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "m2",
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmt",
+   "args": [
+    null,
+    "py",
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "areaFmtBoth",
+   "args": [
+    null,
+    "py",
+    null
+   ],
+   "value": "—"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    0
+   ],
+   "value": "0m"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    68
+   ],
+   "value": "68m"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    361
+   ],
+   "value": "361m"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    436
+   ],
+   "value": "436m"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    999.4
+   ],
+   "value": "999m"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    999.5
+   ],
+   "value": "1000m"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    1000
+   ],
+   "value": "1.0km"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    1234
+   ],
+   "value": "1.2km"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    2999
+   ],
+   "value": "3.0km"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    3000
+   ],
+   "value": "3.0km"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    12345
+   ],
+   "value": "12.3km"
+  },
+  {
+   "fn": "distTxt",
+   "args": [
+    29999.9
+   ],
+   "value": "30.0km"
+  },
+  {
+   "fn": "stName",
+   "args": [
+    "서대문"
+   ],
+   "value": "서대문역"
+  },
+  {
+   "fn": "stName",
+   "args": [
+    "서대문역"
+   ],
+   "value": "서대문역"
+  },
+  {
+   "fn": "stName",
+   "args": [
+    "독립문역"
+   ],
+   "value": "독립문역"
+  },
+  {
+   "fn": "stName",
+   "args": [
+    ""
+   ],
+   "value": "역"
+  },
+  {
+   "fn": "stName",
+   "args": [
+    null
+   ],
+   "value": "역"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    "11110|경희궁자이(2단지)|홍파동|199"
+   ],
+   "value": "#ff7a45"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    "11110|경희궁자이(3단지)|평동|233"
+   ],
+   "value": "#4c6ef5"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    "11110|경희궁롯데캐슬|무악동|89"
+   ],
+   "value": "#4c6ef5"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    "경희궁자이(2단지)"
+   ],
+   "value": "#4c6ef5"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    "x"
+   ],
+   "value": "#f04452"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    ""
+   ],
+   "value": "#3182f6"
+  },
+  {
+   "fn": "avatarColor",
+   "args": [
+    "41590|동탄역 롯데캐슬|오산동|1"
+   ],
+   "value": "#f04452"
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    "2017-02-24"
+   ],
+   "value": "2017.02"
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    "2017-02-24"
+   ],
+   "value": 9
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    "20170224"
+   ],
+   "value": "2017.02"
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    "20170224"
+   ],
+   "value": 9
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    "2017.02"
+   ],
+   "value": "2017.02"
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    "2017.02"
+   ],
+   "value": 9
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    "2019-11"
+   ],
+   "value": "2019.11"
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    "2019-11"
+   ],
+   "value": 7
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    "2017"
+   ],
+   "value": "2017"
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    "2017"
+   ],
+   "value": 9
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    "abcd"
+   ],
+   "value": "abcd"
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    "abcd"
+   ],
+   "value": null
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    ""
+   ],
+   "value": ""
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    ""
+   ],
+   "value": null
+  },
+  {
+   "fn": "approveYM",
+   "args": [
+    null
+   ],
+   "value": ""
+  },
+  {
+   "fn": "yearsSince",
+   "args": [
+    null
+   ],
+   "value": null
+  },
+  {
+   "fn": "mdD",
+   "args": [
+    "2026-09-28"
+   ],
+   "value": "26.09.28"
+  },
+  {
+   "fn": "mdD",
+   "args": [
+    "2026-07-08"
+   ],
+   "value": "26.07.08"
+  },
+  {
+   "fn": "mdD",
+   "args": [
+    "2017-02-24"
+   ],
+   "value": "17.02.24"
+  }
+ ]
+}

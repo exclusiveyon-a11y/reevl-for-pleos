@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Reevl app token (css var app) (globals.css:149, dark) -->
+    <color name="reevl_app">#0E0F11</color>
+</resources>
