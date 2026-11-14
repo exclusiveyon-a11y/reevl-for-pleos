@@ -19,7 +19,7 @@ Pleos Connect 차량용 앱입니다. 차량의 위치와 진행 방향으로 �
 |---|---|
 | 앱 이름 | REEVL for Pleos — 지나가는 동네가 궁금해질 때, 리블 |
 | release APK | [`apk/REEVL_REEVLforPleos_release.apk`](apk/REEVL_REEVLforPleos_release.apk) (서명된 release 빌드, arm64-v8a·x86_64) |
-| 시연 영상 | [`demo/REEVL_for_Pleos_demo.mp4`](demo/REEVL_for_Pleos_demo.mp4) — Pleos Connect Emulator 2.1.0 실제 화면 녹화 |
+| 시연 영상 | **YouTube: https://youtu.be/c1amhZA4Kro** · 원본 [`demo/REEVL_for_Pleos_demo.mp4`](demo/REEVL_for_Pleos_demo.mp4) — 휴대폰 + Pleos Connect Emulator 2.1.0 실제 화면 녹화 |
 | 개발·테스트 에뮬레이터 | **Pleos Connect Emulator v2.1.0** (Automotive, API 34, arm64 시스템 이미지), 화면 **2560×1440**(가로) — 분할 화면·전체 화면 모두 대응 |
 | Pleos SDK | NaviHelper 3.0.5 · Gleo Interface(App Schema, `app/src/main/assets/schema.json`) |
 

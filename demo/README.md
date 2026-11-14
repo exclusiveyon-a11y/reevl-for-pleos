@@ -1,5 +1,7 @@
 # demo
 
+**YouTube: https://youtu.be/c1amhZA4Kro**
+
 `REEVL_for_Pleos_demo.mp4` (2분 33초, 1920×1080) — 휴대폰(리블 웹)과 차(REEVL for Pleos, Pleos Connect Emulator 2.1.0)의 **실제 화면 녹화**를 핵심 기능 9장면으로 편집했습니다(2026-11-14).
 
 | # | 장면 | 화면 |
