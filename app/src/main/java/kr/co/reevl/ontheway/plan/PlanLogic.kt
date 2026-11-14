@@ -74,6 +74,36 @@ object PlanLogic {
     }
 
     /**
+     * The plan HOME shows under "오늘 방문": today's first, else the soonest upcoming, else an undated one. A plan whose
+     * date has passed is never shown as today's (screen-ux-research P0-2) — with only past plans HOME is empty.
+     */
+    fun homePlan(plans: List<PlanSummary>, today: LocalDate): PlanSummary? = sortForToday(plans, today).firstOrNull { p ->
+        val d = p.plannedDate?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+        d == null || !d.isBefore(today)
+    }
+
+    /**
+     * `추가` from a detail with no plan open: the same plan HOME calls "오늘 방문" — never a past one (QA 2026-11-10: with only
+     * yesterday's plan HOME said "오늘 방문할 곳이 없어요" but 추가 put the complex into yesterday's plan).
+     */
+    fun addTarget(plans: List<PlanSummary>, today: LocalDate): PlanSummary? = homePlan(plans, today)
+
+    /** cids of [opened] (the plan on screen), else of [home] (HOME's 오늘 방문 plan). */
+    fun planCids(opened: Plan?, home: Plan?): Set<String> = (opened ?: home)?.stops?.mapNotNull { it.cid }?.toSet().orEmpty()
+
+    /** Plans debounce for a user-asked refresh (driving-context-spec §2.2: 30 s). 0 = never loaded. */
+    const val PLANS_DEBOUNCE_MS = 30_000L
+    fun plansStale(loadedAtMs: Long, nowMs: Long): Boolean = loadedAtMs == 0L || nowMs - loadedAtMs >= PLANS_DEBOUNCE_MS
+
+    /** HOME section line: `토요일 임장 · 오늘` / `토요일 임장 · 11.15 (토)` / `토요일 임장` (undated). No year. */
+    fun homeSection(p: PlanSummary, today: LocalDate): String {
+        val d = p.plannedDate?.let { runCatching { LocalDate.parse(it) }.getOrNull() } ?: return p.title
+        val day = if (d == today) "오늘" else String.format(Locale.US, "%02d.%02d", d.monthValue, d.dayOfMonth) +
+            " (${d.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.KOREAN)})"
+        return "${p.title} · $day"
+    }
+
+    /**
      * `오늘 갈 곳 N곳` only when the top plan is dated today; a dated plan names its date (`11월 7일 (토) 갈 곳 3곳`);
      * an undated plan says `갈 곳 N곳` — never "오늘" for a plan that has no date (D2 review M-10).
      */

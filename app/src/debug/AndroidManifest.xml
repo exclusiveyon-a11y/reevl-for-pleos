@@ -8,15 +8,8 @@
             android:exported="true"
             android:launchMode="singleTop" />
 
-        <!--
-          D4 item 6 (debug builds only, pending Pleos review): declare the list activity Distraction Optimized so the
-          platform lets it stay on screen while CarUxRestrictions requires DO — the app then applies its own lock
-          (DrivingPolicy: identity + guide + one lock line). Without this declaration Pleos blocks the whole app
-          while in D ("주행 중에는 사용할 수 없습니다", evidence R13_*). Release builds do not declare DO until
-          Pleos confirms a third-party app may (Pleos 주행 규제 정책: "DO를 선언한 앱도 … 기능별 UX 제한을 직접 적용").
-        -->
-        <activity android:name=".MainActivity" tools:node="merge">
-            <meta-data android:name="distractionOptimized" android:value="true" />
-        </activity>
+        <!-- Debug only: let `adb shell am broadcast` (shell uid, no Gleo permission) reach the Gleo handler for checks. -->
+        <receiver android:name=".gleo.GleoReceiver" tools:node="merge" tools:remove="android:permission" />
+        <!-- distractionOptimized is declared in src/main (all builds — contest decision, see the comment there). -->
     </application>
 </manifest>

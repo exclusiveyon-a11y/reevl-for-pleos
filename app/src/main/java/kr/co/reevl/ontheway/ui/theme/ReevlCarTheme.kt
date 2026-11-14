@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 /**
- * Reevl colours for the car, light and dark — every value is a generated web token ([ReevlWeb], from
- * reevl frontend/app/globals.css). Names follow the car spec (docs/design/car-ui-spec.md §1.1):
+ * Reevl colours for the car, light and dark — every value is a generated Reevl token ([ReevlWeb] → kr.co.reevl.design,
+ * copied from reevl design-tokens by scripts/sync_reevl_tokens.sh). Names follow the car spec (docs/design/car-ui-spec.md §1.1):
  * `page` = `--app`, `card` = `--bg`, the rest keep the web names.
  *
  * Day/night follows the system screen mode (Pleos Settings › 디스플레이 › 화면 모드 자동·라이트·다크, native_03 /
@@ -49,15 +49,11 @@ data class CarColors(
     val aiInk: Color,
 ) {
     /**
-     * Primary action — always the strongest control on screen.
-     * Day (Ruling 37) = Reevl Button primary exactly (`bg-brand text-white`, Button.tsx BTN.primary): 3.71:1, valid as
-     * WCAG large text (label 30 sp ExtraBold) — locked by ContrastTest.
-     * Night (Ruling 38) = Pleos native night inversion (native_08: the emphasised button turns into a light fill with
-     * dark text) in Reevl colours: dark-mode `--brand` #4D9FFF (globals.css:171) fill + dark `--app` #0E0F11
-     * (globals.css:149) label = 7.05:1. (The web's dark primary, white on #4D9FFF, is 2.72:1 and is not used.)
+     * Primary action — always the strongest control on screen: web Button primary `bg-brand-fill text-white` (the generated
+     * token `brandFill` #1D6CE3, the same in both modes) with a white label, 4.88:1 — locked by ContrastTest.
      */
-    val primaryFill: Color get() = brand
-    val primaryText: Color get() = if (dark) page else onBrand
+    val primaryFill: Color get() = ReevlWeb.Light.brandFill
+    val primaryText: Color get() = onBrand
 
     /** Pleos Basic button "Pressed": background changes by mode — the ink at 10 % over the fill (guide SVG basic_state). */
     val pressOverlay: Color get() = ink.copy(alpha = 0.10f)
@@ -95,17 +91,18 @@ object CarTheme {
 }
 
 @Composable
-fun ReevlCarTheme(driving: Boolean = false, dark: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun ReevlCarTheme(driving: Boolean = false, moving: Boolean = false, dark: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val ctx = LocalContext.current
     val animatorScale = remember {
         runCatching { Settings.Global.getFloat(ctx.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) }.getOrDefault(1f)
     }
     val colors = if (dark) CarColors.Dark else CarColors.Light
+    // [moving] = DriveContext says moving / idling (vehicle signals), [driving] = CarUxRestrictions: either freezes the AI gradients.
+    val motion = kr.co.reevl.ontheway.ui.components.AiMotion.allowed(driving, moving, animatorScale)
     CompositionLocalProvider(
         LocalCarColors provides colors,
         LocalCarType provides CarTypography.create(colors),
         LocalDriving provides driving,
-        LocalMotion provides (!driving && animatorScale > 0f),
-        content = content,
-    )
+        LocalMotion provides motion,
+    ) { kr.co.reevl.ontheway.ui.components.ProvideAiClock(motion, content) }
 }

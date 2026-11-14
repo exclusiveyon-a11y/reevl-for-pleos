@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Adaptive icon foreground: the Reevl web app icon (frontend/public/reevl/icon-512.png) inset 15 % so its mark (59 % of the
+     512 px tile) lands at ≈ 44 dp of the 108 dp canvas, inside the 66 dp safe circle (Android adaptive icon guide; Pleos
+     App Icon guide points to it). The 2026-11-09 build used the PNG edge to edge, so docks cropped the R. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/reevl_app_icon"
+    android:inset="15%" />

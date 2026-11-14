@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.Dp
 import kr.co.reevl.ontheway.ui.theme.LocalCarColors
 import kr.co.reevl.ontheway.ui.theme.LocalMotion
 
-/** Web `#3182F6` — the logo square is this exact colour in both themes (ReevlLogo.tsx rect fill="#3182F6"). */
-private val SparkBlue = Color(0xFF3182F6)
+/** The logo square, same colour in both themes (web ReevlLogo.tsx rect fill) — Reevl car token `car.color.logo`. */
+private val SparkBlue = kr.co.reevl.design.car.ReevlCarTheme.Brand.logo
 
 /**
  * Reevl wordmark / mark, drawn from the web SVG paths (ReevlLogoPaths, generated from ReevlLogo.tsx).

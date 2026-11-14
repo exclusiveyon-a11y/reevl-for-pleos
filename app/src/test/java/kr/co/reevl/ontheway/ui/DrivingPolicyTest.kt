@@ -12,28 +12,17 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-/** Review Important 3 (one driving gate for VISIT_LIST and STOP_DETAIL) and Important 2 (A7 fix-round wording). */
+/** Parked-only actions (car-ds-v2: the whole app locks while driving) and A7 fact wording. */
 class DrivingPolicyTest {
 
-    @Test fun driving_hidesDetailParts_onEveryStopScreen_keepsIdentityAndGuide() {
-        val d = DrivingPolicy.visible(driving = true)
-        for (p in listOf(StopPart.Address, StopPart.Facts, StopPart.Trades, StopPart.VisitActions, StopPart.DetailButton)) assertFalse("$p while driving", p in d)
-        for (p in listOf(StopPart.OrderBadge, StopPart.Avatar, StopPart.Name, StopPart.Status, StopPart.GuideButton, StopPart.LockLine)) assertTrue("$p while driving", p in d)
-    }
-
     @Test fun v7_parkedOnlyActions_areLockedWhileDriving_guideStays() {
-        for (a in listOf(ParkedAction.Nearby, ParkedAction.ChangeConfirm, ParkedAction.CustomerView, ParkedAction.EditPlan)) {
+        for (a in listOf(ParkedAction.Nearby, ParkedAction.ChangeConfirm, ParkedAction.EditPlan)) {
             assertFalse("$a while driving", DrivingPolicy.allows(a, driving = true))
             assertTrue("$a parked", DrivingPolicy.allows(a, driving = false))
         }
         assertTrue(DrivingPolicy.allows(ParkedAction.Guide, driving = true))
     }
 
-    @Test fun parked_showsEverything_butNoLockLine() {
-        val p = DrivingPolicy.visible(driving = false)
-        assertTrue(StopPart.entries.filter { it != StopPart.LockLine }.all { it in p })
-        assertFalse(StopPart.LockLine in p)
-    }
 
     private val today = LocalDate.of(2026, 10, 27)
     private fun c(vararg pairs: Pair<String, Any?>): CarComplex {

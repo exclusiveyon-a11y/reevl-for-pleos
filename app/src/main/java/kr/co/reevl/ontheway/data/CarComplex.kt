@@ -15,7 +15,7 @@ data class CarAvatar(
     /** First letter of the complex name (web AptAvatar: `(row.name || '아').trim()[0]`). */
     val initials: String = "아",
     /** `#rrggbb` — letter colour; background = this colour at [bgAlpha] (web Avatar: color-mix 14%). */
-    val color: String = "#3182f6",
+    val color: String = kr.co.reevl.design.car.ReevlCarTheme.Brand.LOGO_HEX, // server default = the logo blue
     val bgAlpha: Float = 0.14f,
     /** Letter size = diameter × this (web Avatar: `fontSize: size * 0.42`), weight 800. */
     val fontScale: Float = 0.42f,
@@ -99,6 +99,39 @@ data class CarComplex(
     val dataUpdatedAt: String? = null,
     val sources: List<CarSource> = emptyList(),
     val notice: String = "참고용 통계 · 실거래 신고 기준",
+    /** Every REEVL metric of the web complex detail / compare (reevl lib/carDetail.ts, 2026-11-10). Null on older servers. */
+    val detail: CarDetail? = null,
+)
+
+// ── `detail` (reevl frontend/lib/carDetail.ts v1) — labels and text are the web's, formatted on the server with the
+//    web's own functions; the car only lays them out. A missing value is a missing key (never "—" or 0 on the wire). ──
+
+@Serializable
+data class CarMetric(
+    val label: String,
+    /** Screen text as the web writes it (`13억 7,500만`, `+33.5%`, `61점`). */
+    val v: String,
+    /** Number for the compare "best" mark only. */
+    val n: Double? = null,
+    /** `high` / `low` = which side wins in compare (web CompareView `better`); null = neutral, never highlighted. */
+    val better: String? = null,
+    /** `dir` = sign colour (up red / down blue) · `ai` = the one REEVL AI accent. */
+    val color: String? = null,
+    /** Small text beside the value (rank, percentile, count, lines). */
+    val sub: String? = null,
+)
+
+@Serializable
+data class CarDetailTab(val key: String, val title: String, val keys: List<String> = emptyList())
+
+@Serializable
+data class CarDetail(
+    val v: Int = 1,
+    val metrics: Map<String, CarMetric> = emptyMap(),
+    /** Fixed order of every key per tab — detail draws the present ones, compare lines complexes up by key. */
+    val tabs: List<CarDetailTab> = emptyList(),
+    /** Tab that also lists the recent trades (`price`). */
+    val trades: String? = null,
 )
 
 /** Complex summaries by cid. Memory first, disk behind it. Cleared with the plan cache (logout, 401, new link). */

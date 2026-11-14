@@ -120,7 +120,7 @@ class PlanRepositoryTest {
         assertNull("token cleared", tokens.get())
         assertNull("cache cleared", cache.plans())
         assertNull("cache cleared", cache.plan("p1"))
-        assertEquals("차량 연결이 만료됐어요. 휴대폰에서 새 코드를 받아 주세요.", UserMessages.of(RepoError.Expired))
+        assertEquals("차량 연결이 끊겼어요. 휴대폰으로 다시 연결해 주세요.", UserMessages.of(RepoError.Expired))
     }
 
     @Test fun http401_onPatch_clearsToken_isExpired() = runTest {
@@ -350,6 +350,8 @@ class PlanRepositoryTest {
             override fun get(): String? = null
             override fun set(token: String) = throw java.security.ProviderException("keystore unavailable")
             override fun clear() = Unit
+            override fun rotate(old: String, new: String) = false
+            override fun session() = 0L
         }
         server.enqueue(json(200, """{"token":"${"a".repeat(43)}"}"""))
         val r = PlanRepository(Api(OkHttpTransport(server.url("/").toString())), broken, cache, clock = { now }).link("123456")
@@ -385,6 +387,28 @@ class PlanRepositoryTest {
         val req = server.takeRequest()
         assertEquals("/api/car/complex/11110%7C%EA%B2%BD%ED%9D%AC%EA%B6%81%EC%9E%90%EC%9D%B4%282%EB%8B%A8%EC%A7%80%29%7C%ED%99%8D%ED%8C%8C%EB%8F%99%7C199", req.path)
         assertEquals("Bearer " + "T".repeat(43), req.getHeader("authorization"))
+    }
+
+    @Test fun complex_withDetail_isReusedOnDevice_for24h_thenAskedAgain() = runTest {
+        // Server cost (2026-11-10): daily data → DETAIL / COMPARE reuse a copy younger than a day instead of a new request.
+        val body = """{"cid":"x","name":"이름","detail":{"v":1,"metrics":{"hh":{"label":"세대수","v":"644세대","n":644}},"tabs":[]}}"""
+        server.enqueue(json(200, body)); server.enqueue(json(200, body))
+        val r = repo()
+        assertTrue(r.complex("x") is RepoResult.Ok)
+        now += COMPLEX_FRESH_MS - 1
+        val again = r.complex("x") as RepoResult.Ok
+        assertEquals("644세대", again.value.value.detail!!.metrics["hh"]!!.v)
+        assertEquals(1, server.requestCount)
+        now += 2
+        assertTrue(r.complex("x") is RepoResult.Ok)
+        assertEquals(2, server.requestCount)
+    }
+
+    @Test fun complex_withoutDetail_isAlwaysAskedAgain() = runTest {
+        server.enqueue(json(200, """{"cid":"x","name":"이름"}""")); server.enqueue(json(200, """{"cid":"x","name":"이름"}"""))
+        val r = repo()
+        r.complex("x"); r.complex("x")
+        assertEquals(2, server.requestCount)
     }
 
     @Test fun complex_nullTrades_staysNull_notEmpty() = runTest {

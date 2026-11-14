@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature
         android:name="android.hardware.type.automotive"
@@ -7,6 +8,8 @@
 
     <!-- Reevl car API (BuildConfig.BASE_URL). -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 말하기 (voice/Voice.kt): asked on the first tap, and only when the car has a speech recogniser this app may bind. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <!-- NaviHelper: get*Info(), requestTrip() -->
     <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
@@ -18,6 +21,21 @@
          "대안"). Asked only when NEARBY is opened; without it NEARBY uses the visited stop's coordinates. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- pleos-signals-and-cost.md §1.1: AAOS vehicle properties for the driving-context engine. CAR_SPEED (PERF_VEHICLE_SPEED)
+         is dangerous = asked at runtime; CAR_POWERTRAIN (GEAR_SELECTION · PARKING_BRAKE_ON · IGNITION_STATE) is normal. -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED" />
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
+
+    <!-- MapLibre's AAR adds ACCESS_WIFI_STATE (unused by the map: tiles need INTERNET, its connectivity check needs
+         ACCESS_NETWORK_STATE, which stays). Removed = one permission fewer (review-user-privacy-security "접근권한 최소화"). -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" tools:node="remove" />
+
+    <!-- Package visibility: find a RecognitionService (voice/Voice.kt VoiceProbe). -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="false"
@@ -40,7 +58,32 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- Distraction Optimized — CONTEST BUILD decision (docs/pleos-compliance.md #10, 2026-11-11): declared in every build.
+                 With it the platform keeps this activity on screen while CarUxRestrictions require DO, and the app itself covers the
+                 whole window with LockTemplate (no content, no actions, nothing pressable) while CarUxGate reports DO + restrictions;
+                 the screen state underneath is kept. Without it Pleos blocks a DO-undeclared app while driving
+                 (sdk-docs-2026-10-19 …planning-guide_driving-restiction-policy.txt "DO 미선언 시 … Drive 사용 불가") and the
+                 developer guide asks DO apps to apply restrictions themselves (…driving-restriction-development-guide.txt
+                 "DO를 선언한 앱도 … 기능별 UX 제한을 직접 적용"). Lifestyle is not one of the categories app-category.txt lists for
+                 limited driving use, so a MARKET release needs Pleos' written OK to keep this — or drop this line. -->
+            <meta-data android:name="distractionOptimized" android:value="true" />
         </activity>
+        <!-- Gleo Interface (assets/schema.json, component "service" → Gleo sendBroadcast with our package). No UI: requests
+             may come while driving. Exported because Gleo is another app. -->
+        <!-- Only Gleo may send: ai.umos.gleo.permission.APP_ACTION is declared by Gleo AI (ai.umos.ambientai) with
+             protectionLevel=signature (emulator 2.1.0, `pm list permissions -f`), so other apps cannot hold it. The debug
+             manifest removes this to let `adb shell am broadcast` reach the handler. -->
+        <receiver
+            android:name=".gleo.GleoReceiver"
+            android:exported="true"
+            android:permission="ai.umos.gleo.permission.APP_ACTION">
+            <intent-filter>
+                <action android:name="SEARCH_PROPERTIES" />
+                <action android:name="ANALYZE_PROPERTY" />
+                <action android:name="MANAGE_VISIT_PLAN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
         <!-- SpikeActivity (NaviHelper spike) lives in the debug source set only, without a launcher entry. -->
     </application>
 </manifest>

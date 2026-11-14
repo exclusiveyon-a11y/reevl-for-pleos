@@ -115,8 +115,8 @@ object ReevlFormat {
         return AVATAR_PAL[(h % AVATAR_PAL.size).toInt()]
     }
 
-    /** lib/rt.ts:3151 `const PAL` (same list as ReevlWeb.avatarPalette, kept as strings for the web's `#rrggbb`). */
-    val AVATAR_PAL = listOf("#3182f6", "#f5a623", "#7b61ff", "#f04452", "#00c2b3", "#ff7a45", "#4c6ef5", "#e64980", "#12b886")
+    /** lib/rt.ts:3151 `const PAL` as `#rrggbb` strings — Reevl car token `car.color.avatar` (same list as ReevlWeb.avatarPalette). */
+    val AVATAR_PAL = kr.co.reevl.design.car.ReevlCarTheme.Brand.avatarHex
 
     // ── components/detail/KeyStats.tsx:33-34 (after A7 fix round 1) ──
 

@@ -1,0 +1,87 @@
+{
+  "packageName": "kr.co.reevl.ontheway",
+  "appDescription": "REEVL finds apartment complexes around the car and answers with recorded real-estate transaction prices, saved homes and today's visit plan.",
+  "invokeWord": "리블",
+  "version": "0.3.0",
+  "actionCalls": [
+    {
+      "type": "function",
+      "function": {
+        "name": "SEARCH_PROPERTIES",
+        "description": "Search apartment complexes near the car's current location that match the conditions the user states.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The user's search conditions in their own words."
+            }
+          },
+          "required": [
+            "query"
+          ]
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "ANALYZE_PROPERTY",
+        "description": "Describe one apartment complex with its recent recorded transaction prices, household count and completion year, or describe the neighborhood the car is in now with its price index change, a notable complex and local news headlines.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "complexIdOrReference": {
+              "type": "string",
+              "description": "The complex name, a reference to a complex mentioned earlier in the conversation, or a reference to the neighborhood the car is in now."
+            },
+            "query": {
+              "type": "string",
+              "description": "What the user wants to know about the complex."
+            }
+          },
+          "required": [
+            "complexIdOrReference"
+          ]
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "MANAGE_VISIT_PLAN",
+        "description": "List today's visit plan, or add or remove a complex in it, or reorder its remaining stops into the shortest straight-line route, or keep a complex in the user's saved homes; changes are made only after the user confirms.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "list",
+                "add",
+                "remove",
+                "reorder",
+                "save"
+              ],
+              "description": "The operation to perform on the visit plan or saved homes."
+            },
+            "complexIdOrReference": {
+              "type": "string",
+              "description": "The complex name or a reference to a complex mentioned earlier; not needed for listing."
+            },
+            "confirmed": {
+              "type": "boolean",
+              "description": "True only when the user has explicitly confirmed the change REEVL asked about."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        },
+        "component": "service"
+      }
+    }
+  ]
+}

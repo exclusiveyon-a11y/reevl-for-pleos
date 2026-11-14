@@ -15,10 +15,16 @@ import android.os.SystemClock
  * 표준 Android 위치 API를 권한·기기 정책 검증 후 사용" — the Pleos FusedLocation SDK is still "준비 중"). On the emulator
  * fixes come from `adb emu geo fix <lon> <lat>`; those are samples, not road evidence.
  *
- * Privacy (§3-A step 8, slide 13 "동의 없는 위치 이력 보관" 제외): only the last two fixes and the last heading measured
- * while moving are kept, in memory, while the app is in front. Nothing is written to disk or logged with coordinates.
+ * Privacy (§3-A step 8, slide 13 "동의 없는 위치 이력 보관" 제외): this class keeps only the last two fixes and the last heading
+ * measured while moving, in memory, while the app is in front. Nothing is written to disk or logged with coordinates. The
+ * 10-minute "방금 지나온 곳" trail (driving-context-spec §2.1) lives in drive/Trail — memory only, and 설정 can turn it off.
  */
-class CarLocation(private val context: Context, private val log: (String, Map<String, Any?>) -> Unit = { _, _ -> }) {
+class CarLocation(
+    private val context: Context,
+    private val log: (String, Map<String, Any?>) -> Unit = { _, _ -> },
+    /** Every accepted fix, for the driving-context engine (drive/DriveContext + its in-memory Trail). Main thread. */
+    private val onFix: (NearbyEngine.Fix) -> Unit = {},
+) {
 
     @Volatile private var current: NearbyEngine.Fix? = null
     @Volatile private var previous: NearbyEngine.Fix? = null
@@ -64,10 +70,11 @@ class CarLocation(private val context: Context, private val log: (String, Map<St
         )
         val cur = current
         if (cur != null && f.timeMs < cur.timeMs) return // an older fix (e.g. getLastKnownLocation after an update)
-        if (cur != null && cur.lat == f.lat && cur.lng == f.lng) { current = f; return } // same point repeated: keep the pair
+        if (cur != null && cur.lat == f.lat && cur.lng == f.lng) { current = f; onFix(f); return } // same point repeated: keep the pair
         previous = cur
         current = f
         NearbyEngine.liveHeading(f, cur)?.let { lastMoving = it }
+        onFix(f)
     }
 
     /** A fix younger than [maxAgeMs] plus the heading to classify with (live, or the last moving one as an estimate). */

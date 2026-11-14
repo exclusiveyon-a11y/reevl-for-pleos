@@ -12,6 +12,7 @@ import ai.pleos.playground.navi.data.RouteStartInfo
 import ai.pleos.playground.navi.data.RouteStateInfo
 import ai.pleos.playground.navi.data.TBTInfo
 import ai.pleos.playground.navi.data.TripInfo
+import ai.pleos.playground.navi.data.WaypointArrivedInfo
 import ai.pleos.playground.navi.data.WaypointChangedInfo
 import ai.pleos.playground.navi.helper.listener.NaviHelperEventListener
 import android.content.Context
@@ -63,6 +64,10 @@ class PleosNaviAdapter internal constructor(
 
     private val terminal = MutableSharedFlow<Raw>(extraBufferCapacity = 16)
     private val destinationInfos = MutableSharedFlow<DestinationInfo>(extraBufferCapacity = 4)
+    private val locationInfos = MutableSharedFlow<CurrentLocationInfo>(extraBufferCapacity = 4)
+    private val arrivalFlow = MutableSharedFlow<NaviArrival>(extraBufferCapacity = 8)
+
+    override val arrivals: Flow<NaviArrival> get() = arrivalFlow
 
     @Volatile private var connected = false
     @Volatile private var listenerAdded = false
@@ -138,6 +143,12 @@ class PleosNaviAdapter internal constructor(
 
         override fun onDestinationArrived(destinationArrivedInfo: DestinationArrivedInfo) {
             cb("onDestinationArrived", destinationArrivedInfo.toString())
+            arrivalFlow.tryEmit(NaviArrival(NaviArrival.Kind.DESTINATION, destinationArrivedInfo.name, destinationArrivedInfo.address))
+        }
+
+        override fun onWayPointArrived(waypointArrivedInfo: WaypointArrivedInfo) {
+            cb("onWayPointArrived", waypointArrivedInfo.toString())
+            arrivalFlow.tryEmit(NaviArrival(NaviArrival.Kind.WAYPOINT, waypointArrivedInfo.name, waypointArrivedInfo.address))
         }
 
         override fun onError(errorCode: NaviErrorCode) {
@@ -152,6 +163,7 @@ class PleosNaviAdapter internal constructor(
 
         override fun onCurrentLocationInfo(currentLocationInfo: CurrentLocationInfo) {
             cb("onCurrentLocationInfo", currentLocationInfo.toString())
+            locationInfos.tryEmit(currentLocationInfo)
         }
 
         override fun onRouteStateInfo(routeStateInfo: RouteStateInfo) {
@@ -310,6 +322,29 @@ class PleosNaviAdapter internal constructor(
                 log.event("Destination", stop = currentStopId, lat = d.latitude, lng = d.longitude, msg = d.toString())
                 DestinationSnapshot(lat = d.latitude, lng = d.longitude, name = d.name)
             }
+        }
+    }
+
+    /**
+     * pleos-signals §1.1: `getCurrentLocationInfo()` → `onCurrentLocationInfo` (lat/lng, heading, address `수정구 시흥동`). Connects
+     * first if needed (the listener must be registered). Whether it answers without an active route is what the emulator log
+     * shows (`routing` = a routeId came back).
+     */
+    override suspend fun currentLocation(): NaviLocation? {
+        if (!connected && connect().isFailure) return null
+        return coroutineScope {
+            val pending = async(start = CoroutineStart.UNDISPATCHED) {
+                withTimeoutOrNull(infoTimeoutMs) { locationInfos.first { abs(it.latitude) > EMPTY_DEG || abs(it.longitude) > EMPTY_DEG } }
+            }
+            try { sdk.getCurrentLocationInfo() } catch (t: Throwable) {
+                pending.cancel()
+                log.event("CurrentLocation", code = NaviFailure.SDK_EXCEPTION, msg = "${t.javaClass.simpleName}: ${t.message}")
+                return@coroutineScope null
+            }
+            val c = pending.await()
+            if (c == null) { log.event("CurrentLocation", code = NaviFailure.TIMEOUT, msg = "no onCurrentLocationInfo within ${infoTimeoutMs}ms"); null }
+            else NaviLocation(c.latitude, c.longitude, c.heading.takeIf { it != 0.0 }, c.address.takeIf { it.isNotBlank() },
+                routing = !c.routeId.isNullOrBlank())
         }
     }
 

@@ -22,7 +22,14 @@ object Tour {
     const val MODE_TOUR = "tour"
     const val MODE_LABEL = "고객 투어 모드"
 
-    fun isTour(p: Plan?): Boolean = p?.mode == MODE_TOUR
+    /**
+     * Build switch for every 고객 투어 모드 surface (badge, 고객 A, 약속, 만남 장소, 고객 보기). The Pleos personal build
+     * (`BuildConfig.TOUR_MODE = false`, set at start by AppViewModel) hides them; `-PtourMode=true` builds the Kia
+     * tour build that reproduces evidence/2026-10-2x. Default true so pure tests keep exercising the tour logic.
+     */
+    @Volatile var uiEnabled: Boolean = true
+
+    fun isTour(p: Plan?): Boolean = uiEnabled && p?.mode == MODE_TOUR
 
     /** The pseudonym only in tour mode (V7-contract: "only meaningful when mode = tour"). */
     fun clientLabel(p: Plan?): String? = p?.takeIf { isTour(it) }?.clientLabel?.trim()?.takeIf { it.isNotEmpty() }
@@ -178,6 +185,21 @@ object Insert {
      * The stop the new place follows: the last stop (by position) that is no longer `planned` (visited/skipped);
      * when nothing was visited yet, the stop we are at/heading to (the first planned one). Empty plan → null (= end).
      */
+    /** PLAN_INSERT radio rows: `1 다음`, `2 다음`, … (after each stop, ≤ 5) and `맨 끝`. */
+    data class Option(val label: String, val afterStopId: String?)
+
+    fun options(plan: Plan): List<Option> {
+        val ordered = PlanLogic.ordered(plan)
+        val after = ordered.dropLast(1).take(5).map { Option("${it.position} 다음", it.id) }
+        return after + Option("맨 끝", ordered.lastOrNull()?.id)
+    }
+
+    /** Default = right after the current / last-visited stop (the old single choice), else 맨 끝. */
+    fun defaultOption(plan: Plan, opts: List<Option>): Int {
+        val a = anchor(plan)?.id
+        return opts.indexOfFirst { it.afterStopId == a }.takeIf { it >= 0 } ?: opts.lastIndex
+    }
+
     fun anchor(plan: Plan): PlanStop? {
         val ordered = PlanLogic.ordered(plan)
         return ordered.lastOrNull { it.visitStatus != PlanLogic.PLANNED } ?: ordered.firstOrNull()

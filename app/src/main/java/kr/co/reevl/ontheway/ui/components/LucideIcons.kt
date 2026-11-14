@@ -9,9 +9,10 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.addPathNodes
 import androidx.compose.ui.unit.dp
+import kr.co.reevl.design.car.ReevlCarTheme.Size as CarSize
 
 private fun lucide(name: String, vararg paths: String): ImageVector =
-    ImageVector.Builder(name = name, defaultWidth = 24.dp, defaultHeight = 24.dp, viewportWidth = 24f, viewportHeight = 24f).apply {
+    ImageVector.Builder(name = name, defaultWidth = CarSize.Icon.glyph, defaultHeight = CarSize.Icon.glyph, viewportWidth = 24f, viewportHeight = 24f).apply {
         for (d in paths) addPath(
             pathData = addPathNodes(d), fill = null, stroke = SolidColor(Color.Black), strokeLineWidth = 2f,
             strokeLineCap = StrokeCap.Round, strokeLineJoin = StrokeJoin.Round,
@@ -75,4 +76,30 @@ object Lucide {
     val Handshake: ImageVector by lazy { lucide("Handshake", "m11 17 2 2a1 1 0 1 0 3-3", "m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4", "m21 3 1 11h-2", "M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3", "M3 4h8") }
     /** lucide `map-pin-plus` */
     val MapPinPlus: ImageVector by lazy { lucide("MapPinPlus", "M19.914 11.105A7.298 7.298 0 0 0 20 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 1.202 0 32 32 0 0 0 .824-.738", "M9 10a3 3 0 1 0 6 0a3 3 0 1 0 -6 0", "M16 18h6", "M19 15v6") }
+    /** lucide `search` */
+    val Search: ImageVector by lazy { lucide("Search", "m21 21-4.34-4.34", "M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0") }
+    /** lucide `sparkles` */
+    val Sparkles: ImageVector by lazy { lucide("Sparkles", "M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z", "M20 2v4", "M22 4h-4", "M2 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0") }
+    /** lucide `x` */
+    val X: ImageVector by lazy { lucide("X", "M18 6 6 18", "m6 6 12 12") }
+    /** lucide `circle-question-mark` */
+    val CircleQuestionMark: ImageVector by lazy { lucide("CircleQuestionMark", "M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0", "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3", "M12 17h.01") }
+    /** lucide `star` */
+    val Star: ImageVector by lazy { lucide("Star", "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z") }
+    /** lucide `arrow-left` */
+    val ArrowLeft: ImageVector by lazy { lucide("ArrowLeft", "m12 19-7-7 7-7", "M19 12H5") }
+    /** lucide `arrow-right` */
+    val ArrowRight: ImageVector by lazy { lucide("ArrowRight", "M5 12h14", "m12 5 7 7-7 7") }
+    /** lucide `arrow-up` */
+    val ArrowUp: ImageVector by lazy { lucide("ArrowUp", "m5 12 7-7 7 7", "M12 19V5") }
+    /** lucide `arrow-down` */
+    val ArrowDown: ImageVector by lazy { lucide("ArrowDown", "M12 5v14", "m19 12-7 7-7-7") }
+    /** lucide `flag` */
+    val Flag: ImageVector by lazy { lucide("Flag", "M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528") }
+    /** lucide `info` */
+    val Info: ImageVector by lazy { lucide("Info", "M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0", "M12 16v-4", "M12 8h.01") }
+    /** lucide `menu` */
+    val Menu: ImageVector by lazy { lucide("Menu", "M4 5h16", "M4 12h16", "M4 19h16") }
+    /** lucide `mic` */
+    val Mic: ImageVector by lazy { lucide("Mic", "M12 19v3", "M19 10v2a7 7 0 0 1-14 0v-2", "M12 2h0a3 3 0 0 1 3 3v7a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3v-7a3 3 0 0 1 3 -3Z") }
 }

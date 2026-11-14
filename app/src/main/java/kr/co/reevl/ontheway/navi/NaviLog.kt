@@ -16,7 +16,7 @@ import android.util.Log
 class NaviLog(
     private val adapter: String,
     private val clock: () -> Long = System::currentTimeMillis,
-    private val sink: (tag: String, line: String) -> Unit = { tag, line -> Log.i(tag, line) },
+    private val sink: (tag: String, line: String) -> Unit = { tag, line -> if (kr.co.reevl.ontheway.LogPolicy.ENABLED) Log.i(tag, line) },
     /** Optional append-only copy (`<tag>\t<json>` per line) — survives logcat ring-buffer rotation. */
     private val file: java.io.File? = null,
 ) {
@@ -65,7 +65,7 @@ class NaviLog(
     private fun emit(tag: String, line: String) {
         history += line
         sink(tag, line)
-        file?.let { f -> runCatching { synchronized(this) { f.appendText("$tag\t$line\n") } } }
+        if (kr.co.reevl.ontheway.LogPolicy.ENABLED) file?.let { f -> runCatching { synchronized(this) { f.appendText("$tag\t$line\n") } } }
     }
 
     companion object {

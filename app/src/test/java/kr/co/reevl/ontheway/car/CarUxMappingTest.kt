@@ -34,7 +34,7 @@ class CarUxMappingTest {
 
     @Test fun lockedSignal_closesTheParkedOnlyActions() {
         val driving = CarUxMapping.restricted(true, 0x50)
-        for (a in listOf(ParkedAction.Nearby, ParkedAction.ChangeConfirm, ParkedAction.CustomerView, ParkedAction.EditPlan)) {
+        for (a in listOf(ParkedAction.Nearby, ParkedAction.ChangeConfirm, ParkedAction.EditPlan)) {
             assertFalse("$a", DrivingPolicy.allows(a, driving))
         }
         assertTrue(DrivingPolicy.allows(ParkedAction.Guide, driving))

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Monochrome layer (themed icons): the Reevl mark path (ReevlLogoPaths.Mark), 44 dp tall, centred in the 108 dp canvas. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <group android:scaleX="0.265" android:scaleY="0.265" android:translateX="32.2" android:translateY="32">
+        <path android:fillColor="#FF000000" android:pathData="M0 165.463V0H75.316C109.15 0 126.067 14.7928 126.067 44.3785C126.067 64.3855 112.897 80.9551 86.5555 94.0871L139.045 165.695H100.344L49.9403 93.5077V79.4874C79.2942 74.4663 93.9712 63.0723 93.9712 45.3055C93.9712 33.1004 87.0962 26.9979 73.3462 26.9979H31.2851V165.463H0Z" />
+        <path android:fillColor="#FF000000" android:pathData="M135,0h30v30h-30z" />
+    </group>
+</vector>

@@ -20,7 +20,25 @@ interface NaviAdapter {
      * `RouteStartInfo`), or null when none was reported. Display only — never a success signal by itself.
      */
     val lastRoute: RouteSummary? get() = null
+
+    /**
+     * Arrival callbacks from the car's navigation (Pleos `onDestinationArrived` / `onWayPointArrived`), whatever route the
+     * navigation is on. The app decides whether it was one of its stops (drive/Arrival). Empty for adapters without them.
+     */
+    val arrivals: Flow<NaviArrival> get() = kotlinx.coroutines.flow.emptyFlow()
+
+    /**
+     * The navigation's own idea of where the car is (Pleos `getCurrentLocationInfo()` → `CurrentLocationInfo`: lat/lng,
+     * heading, address `수정구 시흥동`). Null = no answer within the timeout or not supported. No server involved.
+     */
+    suspend fun currentLocation(): NaviLocation? = null
 }
+
+data class NaviArrival(val kind: Kind, val name: String?, val address: String?) {
+    enum class Kind { DESTINATION, WAYPOINT }
+}
+
+data class NaviLocation(val lat: Double, val lng: Double, val headingDeg: Double?, val address: String?, val routing: Boolean)
 
 /** Distance / time as the car's navigation reported them (`RouteStartInfo`). */
 data class RouteSummary(

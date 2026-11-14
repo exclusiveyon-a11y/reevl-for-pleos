@@ -45,6 +45,7 @@ import kr.co.reevl.ontheway.ui.theme.CarTheme
 import kr.co.reevl.ontheway.ui.theme.LocalMotion
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import kr.co.reevl.design.car.ReevlCarTheme.Size as CarSize
 
 /**
  * Brand avatar — port of components/common/AptAvatar.tsx:10-16 (+ AvatarRotator :24-37) and Avatar.tsx:9-37.
@@ -80,14 +81,20 @@ fun AptAvatar(name: String, cid: String?, brand: CarBrand?, size: Dp, modifier: 
 private fun AvatarCircle(url: String?, initial: String, color: Color, size: Dp, fontScale: Float, modifier: Modifier = Modifier) {
     val ctx = LocalContext.current
     val state by produceState<LogoState>(if (url == null) LogoState.None else LogoLoader.cached(url)?.let { LogoState.Ready(it) } ?: LogoState.Loading, url) {
-        if (url != null && value !is LogoState.Ready) value = LogoLoader.load(ctx, url)?.let { LogoState.Ready(it) } ?: LogoState.Failed
+        // The state survives a new url (produceState's holder is not keyed), so always resolve THIS url — a reused avatar slot
+        // (compare page ‹ ›, recycled rows) must not keep the previous complex's logo.
+        value = when {
+            url == null -> LogoState.None
+            else -> LogoLoader.cached(url)?.let { LogoState.Ready(it) }
+                ?: run { value = LogoState.Loading; LogoLoader.load(ctx, url)?.let { LogoState.Ready(it) } ?: LogoState.Failed }
+        }
     }
     val px = with(LocalDensity.current) { size.toPx() }
     when (val s = state) {
         // Car deviation: a 2 dp `--line-strong` ring. The web draws the white logo circle on the grey `--app` page; in the
         // car the rows are white `--bg` cards, where a ring-less white circle disappears (car-ui-spec §2 AptAvatar).
         is LogoState.Ready -> Image(s.bitmap, null, contentScale = ContentScale.Crop,
-            modifier = modifier.size(size).clip(CircleShape).background(Color.White).border(2.dp, CarTheme.colors.lineStrong, CircleShape))
+            modifier = modifier.size(size).clip(CircleShape).background(Color.White).border(CarSize.Stroke.thin, CarTheme.colors.lineStrong, CircleShape))
         LogoState.Loading -> Box(modifier.size(size).clip(CircleShape).background(CarTheme.colors.chip))
         else -> Box(modifier.size(size).clip(CircleShape).background(color.copy(alpha = 0.14f)), contentAlignment = Alignment.Center) {
             Text(initial, color = color, fontWeight = FontWeight.ExtraBold, style = CarTheme.type.title.copy(

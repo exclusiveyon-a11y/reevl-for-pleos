@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pleos flavor: only the permissions the app really uses (review-user-privacy-security "접근권한을 서비스에 필요한 범위 내로
+     최소화"). RECORD_AUDIO is not used here: Pleos Connect has no speech recogniser a third-party app may bind (voice/Voice.kt),
+     and BuildConfig.VOICE_INPUT = false keeps the 말하기 path from ever asking for it. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" tools:node="remove" />
+</manifest>
