@@ -19,10 +19,11 @@ class QaLoopGateTest {
 
     @Test fun areaSentences_wrap_soNumbersAreNeverCut() {
         val area = src("ui/screens/AreaScreen.kt")
-        listOf("insight_", "area_facts", "area_places", "area_top").forEach { tag ->
-            val line = area.lines().first { it.contains("tag = \"$tag") }
-            assertTrue("$tag must wrap", line.contains("wrap = true"))
-        }
+        val top = area.lines().first { it.contains("tag = \"area_top") }
+        assertTrue("area_top must wrap", top.contains("wrap = true"))
+        // 2026-11-14 요약 redesign: insight sentences live in AreaSummary — two lines, never one cut line.
+        val sum = src("ui/ds/comp/AreaSummary.kt")
+        assertTrue(sum.contains("Text(i.text, style = t.rowSecondary.copy(color = r.ink2), maxLines = 2"))
     }
 
     @Test fun compareBest_needsTwoColumnsOnScreen() {

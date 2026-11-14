@@ -10,6 +10,12 @@ import kr.co.reevl.ontheway.nearby.NearbyEngine
 import kr.co.reevl.ontheway.ui.components.AreaIcons
 import kr.co.reevl.ontheway.ui.components.Lucide
 import kr.co.reevl.ontheway.ui.ds.comp.AreaHeroSpec
+import kr.co.reevl.ontheway.ui.ds.comp.AreaCompare
+import kr.co.reevl.ontheway.ui.ds.comp.AreaFact
+import kr.co.reevl.ontheway.ui.ds.comp.AreaInsightLine
+import kr.co.reevl.ontheway.ui.ds.comp.AreaPeriodCell
+import kr.co.reevl.ontheway.ui.ds.comp.AreaSummarySpec
+import kr.co.reevl.ontheway.format.ReevlFormat
 import kr.co.reevl.ontheway.ui.ds.comp.AreaMapSpec
 import kr.co.reevl.ontheway.ui.ds.comp.AreaTileSpec
 import kr.co.reevl.ontheway.ui.ds.comp.BannerKind
@@ -67,15 +73,7 @@ fun AreaScreen(ui: AreaUi, ev: AreaEvents, toast: ToastSlot?) {
     val rows: List<RowSpec> = if (a == null) emptyList() else when (ui.tab) {
         0 -> { // 요약
             footer = listOfNotNull("리블 매매지수 · 실거래 신고", indexDay?.let { "$it 기준" }, "가장 가까운 단지의 동").joinToString(" · ")
-            d.insights.map { i ->
-                RowSpec("ins_${i.kind}", i.text, leading = Leading.Glyph(when (i.kind) {
-                    "rank", "vs_gu" -> if ((y ?: 0.0) >= 0) AreaIcons.TrendingUp else AreaIcons.TrendingDown
-                    "new_high" -> Lucide.ArrowUp
-                    else -> AreaIcons.ChartColumn
-                }), inert = true, wrap = true, tag = "insight_${i.kind}") // a sentence with numbers: 2 lines, never `+12.6…`
-            } + listOfNotNull(
-                AreaLogic.factsLine(a)?.let { RowSpec("facts", it, leading = Leading.Glyph(Lucide.House), inert = true, wrap = true, tag = "area_facts") },
-                AreaLogic.placesLine(a)?.let { RowSpec("places", it, leading = Leading.Glyph(Lucide.TrainFront), inert = true, wrap = true, tag = "area_places") },
+            listOfNotNull(
                 d.notable.firstOrNull()?.let { n -> RowSpec("top_${n.cid}", n.name, AreaLogic.notableLine(n), Leading.Avatar(n.name, n.cid, null),
                     chip = if (n.reason == "new_high") ChipSpec("오늘 최고가", Tone.Warn) else ChipSpec("주목", Tone.Sub), chevron = true,
                     onClick = { ev.onOpenNotable(n.cid) }, wrap = true, tag = "area_top") },
@@ -131,6 +129,29 @@ fun AreaScreen(ui: AreaUi, ev: AreaEvents, toast: ToastSlot?) {
         ui.tab == 3 && rows.isEmpty() -> MessageSpec(null, "눈에 띄는 단지가 없어요", tag = "notable_empty")
         else -> null
     }
-    AreaTemplate(top, banner, tabs, if (ui.tab == 0) heroShown else null, map, rows, tabEmpty, ui.loading, footer,
-        onRow = { row -> row.onClick?.invoke() }, toast = toast)
+    // 요약 (2026-11-14 redesign): the same data as a glanceable summary — see AreaSummary.
+    val summary = if (ui.tab == 0 && a != null) {
+        val per = listOf("1개월" to a.ret.m1, "3개월" to a.ret.m3, "1년" to a.ret.y1).map { (l, v) -> AreaPeriodCell(l, AreaLogic.pct(v), AreaLogic.pct(v).let { p -> if (p.startsWith("+")) 1 else if (p.startsWith("−")) -1 else 0 }) }
+        val guName = a.gu.split(' ').last()
+        val placeName = AreaLogic.placeName(a)
+        val facts = listOfNotNull(
+            a.complexes?.let { AreaFact("단지", "${ReevlFormat.num(it.toDouble())}곳", "complexes") },
+            a.households?.let { AreaFact("세대", "${ReevlFormat.num(it.toDouble())}세대", "households") },
+            a.trades12?.let { AreaFact("최근 1년 거래", "${ReevlFormat.num(it.toDouble())}건", "trades") },
+            a.stations.firstOrNull()?.let { AreaFact("가까운 역", it, "station") },
+        )
+        val ins = d.insights.take(2).map { i ->
+            AreaInsightLine(when (i.kind) {
+                "rank", "vs_gu" -> if ((y ?: 0.0) >= 0) AreaIcons.TrendingUp else AreaIcons.TrendingDown
+                "new_high" -> Lucide.ArrowUp
+                else -> AreaIcons.ChartColumn
+            }, i.text, i.kind)
+        }
+        AreaSummarySpec(region = AreaLogic.regionLine(a), place = placeName, headLabel = "최근 1년 매매지수", headValue = AreaLogic.pct(y),
+            headDir = if (y == null) 0 else y.compareTo(0.0), periods = per,
+            compare = if (a.level == "dong") AreaCompare(placeName, a.ret.y1, AreaLogic.pct(a.ret.y1), guName, a.guRet.y1, AreaLogic.pct(a.guRet.y1)) else null,
+            facts = facts, insights = ins)
+    } else null
+    AreaTemplate(top, banner, tabs, if (ui.tab == 0 && summary == null) heroShown else null, map, rows, tabEmpty, ui.loading, footer,
+        onRow = { row -> row.onClick?.invoke() }, toast = toast, summary = summary)
 }

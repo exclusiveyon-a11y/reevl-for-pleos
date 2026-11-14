@@ -35,17 +35,22 @@ import kr.co.reevl.design.car.ReevlCarTheme.Size as CarSize
  */
 @Composable
 fun AreaTemplate(top: TopBarSpec, banner: BannerSpec?, tabs: TabsSpec, hero: AreaHeroSpec?, map: AreaMapSpec?, rows: List<RowSpec>,
-                 empty: MessageSpec?, loading: Boolean, footer: String?, onRow: (RowSpec) -> Unit, toast: ToastSlot? = null) {
+                 empty: MessageSpec?, loading: Boolean, footer: String?, onRow: (RowSpec) -> Unit, toast: ToastSlot? = null,
+                 summary: kr.co.reevl.ontheway.ui.ds.comp.AreaSummarySpec? = null) {
     Frame("screen_area", top, banner, null, toast, onePane = true) {
         Tabs(tabs)
         // §15.3: an empty / no-location state is centred in the pane like every other message.
-        if (empty != null && !(loading && hero == null)) CenteredMessage(empty)
+        if (empty != null && !(loading && hero == null && summary == null)) CenteredMessage(empty)
         else Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = CarSpace.margin).padding(bottom = CarSpace.margin)) {
             when {
-                loading && hero == null -> Column(Modifier.padding(top = CarSpace.gapTight), verticalArrangement = Arrangement.spacedBy(CarSpace.gapTight)) {
+                loading && hero == null && summary == null -> Column(Modifier.padding(top = CarSpace.gapTight), verticalArrangement = Arrangement.spacedBy(CarSpace.gapTight)) {
                     repeat(4) { Skeleton(CarSpace.rowDouble) }
                 }
                 empty != null -> MessageContent(empty, Modifier.padding(top = CarSize.Empty.topArea))
+                summary != null -> {
+                    kr.co.reevl.ontheway.ui.ds.comp.AreaSummary(summary, rows, onRow)
+                    footer?.let { SourceFooter(it) }
+                }
                 else -> {
                     hero?.let { AreaHero(it) }
                     if (map != null && LocalWideWindow.current) {
